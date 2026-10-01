@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Sklep 4TP{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'shop/style.css' %}">
+</head>
+<body>
+    <nav>
+        <a href="{% url 'shop:index' %}">Start</a> |
+        <a href="{% url 'shop:item_list' %}">Lista</a>
+    </nav>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        &copy; {% now "Y" %} Sklep 4TP
+    </footer>
+</body>
+</html>
