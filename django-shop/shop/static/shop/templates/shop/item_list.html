@@ -1,0 +1,34 @@
+{% extends "shop/base.html" %}
+
+{% block title %}Lista Przedmiotów{% endblock %}
+
+{% block content %}
+<h1>Lista Przedmiotów</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Lp.</th>
+            <th>Nazwa</th>
+            <th>Kategoria</th>
+            <th>Dostępność</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in items %}
+        <tr {% if not item.is_available %}style="background-color: #ffe6e6;"{% endif %}>
+            <td>{{ forloop.counter }}</td>
+            <td>
+                <a href="{% url 'shop:item_detail' item.id %}">{{ item.name }}</a>
+            </td>
+            <td>{{ item.category }}</td>
+            <td>{% if item.is_available %}Dostępny{% else %}<b>Niedostępny</b>{% endif %}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">Brak elementów na liście.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

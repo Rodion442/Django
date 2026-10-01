@@ -1,0 +1,12 @@
+{% extends "shop/base.html" %}
+
+{% block title %}{{ item.name }}{% endblock %}
+
+{% block content %}
+<h1>{{ item.name }}</h1>
+<p><strong>Kategoria:</strong> {{ item.category }}</p>
+<p><strong>Cena:</strong> {{ item.price }} zł</p>
+<p><strong>Dostępny:</strong> {{ item.is_available|yesno:"Tak,Nie" }}</p>
+
+<a href="{% url 'shop:item_list' %}">Wróć do listy</a>
+{% endblock %}
